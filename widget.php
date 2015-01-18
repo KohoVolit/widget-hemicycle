@@ -18,13 +18,14 @@ $url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . '/
 
 $r = json_decode(file_get_contents($url,false,$context));
 
-$abbr2color = [];
+$abbr2row = [];
 foreach ($r->data as $row) {
-    $abbr2color[$row->abbreviation] = $row->color;
+    $abbr2row[$row->abbreviation] = $row;
 }
 $parties = $r->data;
 
-$data = add_attributes($rawdata,$abbr2color);
+$data = add_attributes($rawdata,$abbr2row);
+usort($data, "cmp");
 
 //n api
 $url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . '/napi/?n=' . count($data);
@@ -105,6 +106,12 @@ echo $html;
 
 /* FUNCTIONS */
 
+//sort by position
+function cmp($a, $b)
+{
+    return $a->position - $b->position;
+}
+
 //select distinct parties
 function get_parties ($data) {
     $list = [];
@@ -118,7 +125,12 @@ function get_parties ($data) {
 }
 
 //add attributes for people
-function add_attributes($data,$abbr2color) {
+function add_attributes($data,$abbr2row) {
+    $option_meaning2position = [
+        'against' => -1,
+        'neutral' => 0,
+        'for' => 1
+    ];
     foreach ($data as $key => $row) {
         if (in_array($row->option_meaning,['for','against'])) {
             $data[$key]->badge_opacity = 1;
@@ -131,7 +143,9 @@ function add_attributes($data,$abbr2color) {
             $data[$key]->badge_color = 'green';
         if ($row->option_meaning == 'against')
             $data[$key]->badge_color = 'red';
-        $data[$key]->color = $abbr2color[$row->party];
+        $data[$key]->color = $abbr2row[$row->party]->color;
+        if (isset($abbr2row[$row->party]->position)) $data[$key]->position = $abbr2row[$row->party]->position*100 + $option_meaning2position[$row->option_meaning]*10000000 + $key/100;
+        else $data[$key]->position = 0;
     }
     return $data;
 }
