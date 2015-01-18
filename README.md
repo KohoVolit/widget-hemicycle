@@ -49,10 +49,10 @@ There are example `csv` files (in `/examples` directory) and their convertor `cs
 
 ###Example calling
 `widget.php?
-resource=http://localhost/michal/project/widget-hemicycle/examples/csv2json.php%3Furl%3Dhttp%3A%2F%2Flocalhost%2Fmichal%2Fdev%2Fhemicycle%2Foptims%2Fsingle_vote_event2.csv  
-&lang=cs  
-&width=600  
-&orloj_rows=2  
+resource=http://localhost/michal/project/widget-hemicycle/examples/csv2json.php%3Furl%3Dhttp%3A%2F%2Flocalhost%2Fmichal%2Fdev%2Fhemicycle%2Foptims%2Fsingle_vote_event2.csv
+&lang=cs
+&width=600
+&orloj_rows=2   
 &party_set=cz`
 
 
