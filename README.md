@@ -7,9 +7,13 @@ Resource needs to be a `json` list, where the items have following *required* at
 
 Example of resource:
 ```json
-[{"name":"Michelle","party":"Fairies","option_meaning":"for"}, {"name":"Nico","party":"Pirates","option_meaning":"against"}]
+[{"name":"Michelle","party":"Fairies","option_meaning":"for"},
+ {"name":"Nico","party":"Pirates","option_meaning":"against"}]
 ```
 
+### lang (optional)
+Language [ISO 639-1 code](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
+Default: `en`
 
 
 
