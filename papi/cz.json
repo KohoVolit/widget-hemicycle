@@ -1,0 +1,9 @@
+[
+{"color": "red", "abbreviation": "KSČM", "position": -90},
+{"color": "#91b82e", "abbreviation": "Úsvit", "position": -50},
+{"color": "orange", "abbreviation": "ČSSD", "position": -30},
+{"color": "yellow", "abbreviation": "KDU-ČSL", "position": 20},
+{"color": "#5f91b3", "abbreviation": "ANO", "position": 30},
+{"color": "#660066", "abbreviation": "TOP 09", "position": 70},
+{"color": "blue", "abbreviation": "ODS", "position": 85}
+]
