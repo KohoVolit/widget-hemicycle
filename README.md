@@ -48,11 +48,13 @@ Note: The total **height** of the visualization is: `width * (1/2 + 1/8 + orloj_
 There are example `csv` files (in `/examples` directory) and their convertor `csv2json.php` into `json` objects).
 
 ###Example calling
-`widget.php?
-resource=http://localhost/michal/project/widget-hemicycle/examples/csv2json.php%3Furl%3Dhttp%3A%2F%2Flocalhost%2Fmichal%2Fdev%2Fhemicycle%2Foptims%2Fsingle_vote_event2.csv
-&lang=cs
-&width=600
-&orloj_rows=2   
-&party_set=cz`
+```url
+widget.php?  
+resource=http://localhost/michal/project/widget-hemicycle/examples/csv2json.php%3Furl%3Dhttp%3A%2F%2Flocalhost%2Fmichal%2Fdev%2Fhemicycle%2Foptims%2Fsingle_vote_event2.csv  
+&lang=cs  
+&width=600  
+&orloj_rows=2  
+&party_set=cz
+```
 
 
