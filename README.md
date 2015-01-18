@@ -1,9 +1,11 @@
 # Widget: Hemicycle
 Widget for creation of a hemicycle visualization for a single vote event.
 
+![picture] (https://raw.githubusercontent.com/KohoVolit/widget-hemicycle/master/examples/example.png "Example")
+
 The visualization may be created for any number of representatives in `[5, 250]` interval.
 
-Technically, the visualization consists of 3 parts: *hemicycle* (upper part), *legend* (middle part) and *orloj* (lower part).
+Technically, the visualization consists of 3 parts ([D3 reusable charts](http://bost.ocks.org/mike/chart/)): *hemicycle* (upper part), *legend* (middle part) and *orloj* (lower part). These parts may be used separately within another visualization.
 
 ## Parameters
 ### resource (required)
@@ -30,7 +32,7 @@ Default: `1`
 Example of orloj_rows: `2`
 
 ### party_set (optional)
-Name of set of parties (file with parties' information). The party set file (e.g., `cz.json) needs to exist in `/papi` directory.
+Name of set of parties (file with parties' information). The party set file (e.g., `cz.json`) needs to exist in `/papi` directory.
 
 Default: `data`
 
@@ -45,7 +47,7 @@ Note: The total **height** of the visualization is: `width * (1/2 + 1/8 + orloj_
 
 ##Examples
 ###Example files
-There are example `csv` files (in `/examples` directory) and their convertor `csv2json.php` into `json` objects).
+There are example `csv` files (in `/examples` directory) and their convertor `csv2json.php` into `json` objects.
 
 ###Example calling
 ```url
