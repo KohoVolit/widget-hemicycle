@@ -20,12 +20,12 @@ Language [ISO 639-1 code](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
 
 Default: `en`
 
-Example of language: `cs`
+Example of lang: `cs`
 
 ### orloj_rows (optional)
 Number of rows in `Orloj`
 
-Default: 1
+Default: `1`
 
 Example of orloj_rows: `2`
 
@@ -39,7 +39,7 @@ Example of party_set: `cz`
 ### width (optional)
 Width of the visualization in pixels.
 
-Default: 400
+Default: `400`
 
 Note: The total **height** of the visualization is: `width * (1/2 + 1/8 + orloj_rows*1/16)`.
 
@@ -49,10 +49,10 @@ There are example `csv` files (in `/examples` directory) and their convertor `cs
 
 ###Example calling
 `widget.php?
-resource=http://localhost/michal/project/widget-hemicycle/examples/csv2json.php%3Furl%3Dhttp%3A%2F%2Flocalhost%2Fmichal%2Fdev%2Fhemicycle%2Foptims%2Fsingle_vote_event2.csv
-&lang=cs
-&width=600
-&orloj_rows=2
+resource=http://localhost/michal/project/widget-hemicycle/examples/csv2json.php%3Furl%3Dhttp%3A%2F%2Flocalhost%2Fmichal%2Fdev%2Fhemicycle%2Foptims%2Fsingle_vote_event2.csv  
+&lang=cs  
+&width=600  
+&orloj_rows=2  
 &party_set=cz`
 
 
