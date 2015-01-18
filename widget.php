@@ -77,7 +77,7 @@ else
 if (isset($_GET['orloj_rows']))
     $rows_orloj = $_GET['orloj_rows'];
 else
-    $rows_orloj = 400; //default;
+    $rows_orloj = 1; //default;
 
 
 /* TEMPLATE */
