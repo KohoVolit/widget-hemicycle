@@ -6,10 +6,11 @@ Widget for creation of a hemicycle visualization for a single vote event.
 The visualization may be created for any number of representatives in `[5, 250]` interval.
 
 Technically, the visualization consists of 3 parts ([D3 reusable charts](http://bost.ocks.org/mike/chart/)): *hemicycle* (upper part), *legend* (middle part) and *orloj* (lower part). These parts may be used separately within another visualization.
-
 ## Parameters
 ### resource (required)
-Resource needs to be a `json` list, where the items have following *required* attributes: `name`, `party`, `option_meaning` (may be either `for`, `against` or `neutral`). Other attributes are optional.
+Resource needs to be a `json` list, where the items have following *required* attributes: `name`, `party`, `option_meaning` (may be either `for`, `against` or `neutral`).  
+Some other attributes are *semi-optional* (they are required unless `party_set` is set): `color`, `position`.  
+Other attributes are optional, namely `description` (used in tooltips).
 
 Example of resource:
 ```json
@@ -37,6 +38,8 @@ Name of set of parties (file with parties' information). The party set file (e.g
 Default: `data`
 
 Example of party_set: `cz`
+
+Note: either `party_set` is required, or the resource must contain `color` and `position` for each person.
 
 ### width (optional)
 Width of the visualization in pixels.
