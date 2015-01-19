@@ -109,9 +109,12 @@ $response['data'] = NULL;
 
 // --- Step 3: Process Request
 
-function find_party($abbr, $data) {
+function find_party($party, $data) {
   foreach ($data as $row) {
-    if ($row->abbreviation == $abbr) return $row;
+    if (isset($row->abbreviation) and ($row->abbreviation == $party))
+        return $row;
+    if (isset($row->name) and ($row->name == $party))
+        return $row;
   }
   $default = new StdClass();  
   $default->color = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT); //random color
