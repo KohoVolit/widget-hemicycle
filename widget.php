@@ -10,22 +10,26 @@ $rawdata = json_decode(file_get_contents($_GET['resource']));
 $parties = get_parties($rawdata);
 
 //p api
-if (isset($_GET['party_set']))
+if (isset($_GET['party_set'])) {
     $chunk = '&set=' . $_GET['party_set'];
-else
-    $chunk = '';
-$url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . '/papi/?' . http_build_query(['parties' => $parties]) . $chunk;
+    $url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . '/papi/?' . http_build_query(['parties' => $parties]) . $chunk;
 
-$r = json_decode(file_get_contents($url,false,$context));
+    $r = json_decode(file_get_contents($url,false,$context));
 
-$abbr2row = [];
-foreach ($r->data as $row) {
-    $abbr2row[$row->abbreviation] = $row;
+    $abbr2row = [];
+    foreach ($r->data as $row) {
+        $abbr2row[$row->abbreviation] = $row;
+    }
+    $parties = $r->data;
+    $data = add_attributes($rawdata,$abbr2row);
+} else {
+    $parties = create_parties($rawdata);
+    $data = $rawdata;
+    $data = add_attributes($rawdata,[]);
 }
-$parties = $r->data;
 
-$data = add_attributes($rawdata,$abbr2row);
 usort($data, "cmp");
+
 
 //n api
 $url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . '/napi/?n=' . count($data);
@@ -124,6 +128,19 @@ function get_parties ($data) {
     return $out;
 }
 
+//create parties (for orloj later) from people
+function create_parties($data) {
+    $parties = [];
+    foreach ($data as $key => $row) {
+        if (!isset($parties[$row->party])) {
+            $parties[$row->party] = new StdClass();
+            $parties[$row->party]->color = $row->color;
+            $parties[$row->party]->abbreviation = $row->party;
+        }
+    }
+    return $parties;
+}
+
 //add attributes for people
 function add_attributes($data,$abbr2row) {
     $option_meaning2position = [
@@ -143,9 +160,15 @@ function add_attributes($data,$abbr2row) {
             $data[$key]->badge_color = 'green';
         if ($row->option_meaning == 'against')
             $data[$key]->badge_color = 'red';
-        $data[$key]->color = $abbr2row[$row->party]->color;
-        if (isset($abbr2row[$row->party]->position)) $data[$key]->position = $abbr2row[$row->party]->position*100 + $option_meaning2position[$row->option_meaning]*10000000 + $key/100;
-        else $data[$key]->position = 0;
+        if (!isset($data[$key]->color))
+            $data[$key]->color = $abbr2row[$row->party]->color;
+        if (!isset($data[$key]->position)) {
+            if (isset($abbr2row[$row->party]->position)) $data[$key]->position = $abbr2row[$row->party]->position*100 + $option_meaning2position[$row->option_meaning]*10000000 + $key/100;
+            else $data[$key]->position = 0;
+        } else {
+            $data[$key]->position = (float) $data[$key]->position;
+        }
+        
     }
     return $data;
 }

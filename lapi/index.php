@@ -116,9 +116,18 @@ else
     $filename = 'en.json';
 
 //
-$data = json_decode(file_get_contents($filename));
-$response['code'] = 'success';
-$response['data'] = $data;
+$text = file_get_contents($filename);
+if ($text === False) {
+    $response['code'] = 'invalid_request';
+} else {
+    $data = json_decode($text);
+    if (is_null($data))
+        $response['code'] = 'invalid_request';
+    else {
+        $response['code'] = 'success';
+        $response['data'] = $data;
+    }
+}
 $response['status'] = $api_response_code[ $response['code'] ]['HTTP Response'];
 
 
