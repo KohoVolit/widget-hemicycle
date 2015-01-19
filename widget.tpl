@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <script src="http://d3js.org/d3.v3.min.js"></script>
 
-    <script src="d3.hemicycle2.js"></script>
+    <script src="d3.hemicycle.js"></script>
     <script src="d3.tip.js"></script>
     <script src="d3.legend.js"></script>
     <script src="d3.orloj.js"></script>
@@ -61,7 +61,11 @@
 
        // Initialize tooltip
         tip = d3.tip().attr("class", "d3-tip").html(function(d) {
-            return "<span class=\'stronger\'>" + d["name"] + "</span><br>" + d["party"] + "<br>";
+            if (typeof(d["description"]) === 'undefined')
+                chunk = '';
+            else
+                chunk = "<br>" + d["description"];
+            return "<span class=\'stronger\'>" + d["name"] + "</span><br>" + d["party"] + chunk;
         });
         
         // function for chart

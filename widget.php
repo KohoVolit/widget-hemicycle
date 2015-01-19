@@ -134,7 +134,10 @@ function create_parties($data) {
     foreach ($data as $key => $row) {
         if (!isset($parties[$row->party])) {
             $parties[$row->party] = new StdClass();
-            $parties[$row->party]->color = $row->color;
+            if (isset($row->color))
+                $parties[$row->party]->color = $row->color;
+            else
+                $parties[$row->party]->color = 'gray';
             $parties[$row->party]->abbreviation = $row->party;
         }
     }
@@ -160,8 +163,12 @@ function add_attributes($data,$abbr2row) {
             $data[$key]->badge_color = 'green';
         if ($row->option_meaning == 'against')
             $data[$key]->badge_color = 'red';
-        if (!isset($data[$key]->color))
-            $data[$key]->color = $abbr2row[$row->party]->color;
+        if (!isset($data[$key]->color)) {
+            if (isset($abbr2row[$row->party]))
+                $data[$key]->color = $abbr2row[$row->party]->color;
+            else
+                $data[$key]->color = 'gray';
+        }
         if (!isset($data[$key]->position)) {
             if (isset($abbr2row[$row->party]->position)) $data[$key]->position = $abbr2row[$row->party]->position*100 + $option_meaning2position[$row->option_meaning]*10000000 + $key/100;
             else $data[$key]->position = 0;
