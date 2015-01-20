@@ -118,7 +118,7 @@ function find_party($party, $data) {
   }
   $default = new StdClass();  
   $default->color = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT); //random color
-  $default->abbreviation = $abbr;
+  $default->abbreviation = $party;
   $default->position = 0;
   return $default;
 }

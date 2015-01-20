@@ -1,9 +1,9 @@
 [
-{"color": "red", "abbreviation": "KSČM", "position": -90},
+{"color": "red", "abbreviation": "KSČM", "name": "Komunistická strana Čech a Moravy", "position": -90},
 {"color": "#91b82e", "abbreviation": "Úsvit", "position": -50},
-{"color": "orange", "abbreviation": "ČSSD", "position": -30},
+{"color": "orange", "abbreviation": "ČSSD", "name": "Česká strana sociálně demokratická", "position": -30},
 {"color": "yellow", "abbreviation": "KDU-ČSL", "position": 20},
 {"color": "#5f91b3", "abbreviation": "ANO", "position": 30},
-{"color": "#660066", "abbreviation": "TOP 09", "position": 70},
-{"color": "blue", "abbreviation": "ODS", "position": 85}
+{"color": "#660066", "abbreviation": "TOP 09", "name": "TOP 09", "position": 70},
+{"color": "blue", "abbreviation": "ODS", "name": "Občanská demokratická strana", "position": 85}
 ]
