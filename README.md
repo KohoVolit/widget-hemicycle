@@ -48,6 +48,11 @@ Default: `400`
 
 Note: The total **height** of the visualization is: `width * (1/2 + 1/8 + orloj_rows*1/16)`.
 
+### format (optional)
+Format of the visualization. If set to `png` or `svg` that it creates the files and redirects to them.
+
+Default: html
+
 ##Examples
 ###Example files
 There are example `csv` files (in `/examples` directory) and their convertor `csv2json.php` into `json` objects.
@@ -60,6 +65,7 @@ resource=http://localhost/michal/project/widget-hemicycle/examples/csv2json.php%
 &width=600  
 &orloj_rows=2  
 &party_set=cz
+&format=png
 ```
 
 
