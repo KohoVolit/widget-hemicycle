@@ -6,6 +6,9 @@ Widget for creation of a hemicycle visualization for a single vote event.
 The visualization may be created for any number of representatives in `[5, 250]` interval.
 
 Technically, the visualization consists of 3 parts ([D3 reusable charts](http://bost.ocks.org/mike/chart/)): *hemicycle* (upper part), *legend* (middle part) and *orloj* (lower part). These parts may be used separately within another visualization.
+
+Export to `png`(`svg`) requires Inkscape to be installed.
+
 ## Parameters
 ### resource (required)
 Resource needs to be a `json` list, where the items have following *required* attributes: `name`, `party`, `option_meaning` (may be either `for`, `against` or `neutral`).  
@@ -52,6 +55,10 @@ Note: The total **height** of the visualization is: `width * (1/2 + 1/8 + orloj_
 Format of the visualization. If set to `png` or `svg` that it creates the files and redirects to them.
 
 Default: html
+
+Example of format: `png`
+
+Note: Inscape MUST be installed for this export to `png`(`svg`).
 
 ##Examples
 ###Example files
