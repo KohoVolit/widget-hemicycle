@@ -10,7 +10,7 @@ $rawdata = json_decode(file_get_contents($_GET['resource']));
 $parties = get_parties($rawdata);
 
 //p api
-if (isset($_GET['party_set'])) {
+if (isset($_GET['party_set']) and ($_GET['party_set'] != '')) {
     $chunk = '&set=' . $_GET['party_set'];
     $url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . '/papi/?' . http_build_query(['parties' => $parties]) . $chunk;
 
@@ -84,11 +84,18 @@ if (isset($_GET['orloj_rows']))
 else
     $rows_orloj = 1; //default;
 
+/* FORMAT - creates png/svg and redirects to it if required*/
+if (isset($_GET['format']) and (in_array($_GET['format'],['png','svg']))) {
+    $htmlf = file_get_contents('widget_picture.tpl');
+    $htmlf = str_replace('{_FORMAT}',$_GET['format'],$htmlf);
+    $widget_picture = $htmlf;
+} else
+    $widget_picture = "";
 
 /* TEMPLATE */
 // template
 $html = file_get_contents('widget.tpl');
-$replace = [
+$replace_jsonized = [
   '{_DATA}' => $data,
   '{_DAT}' => $dat,
   '{_ARCS}' => $arcs,
@@ -96,11 +103,17 @@ $replace = [
   '{_ORLOJ_PARTIES}' => $orloj_parties,
   '{_WIDTH}' => $width,
   '{_ROWS_ORLOJ}' => $rows_orloj,
-  '{_LANG}' => $lang
+];
+foreach ($replace_jsonized as $k => $r)
+    $html = str_replace($k,json_encode($r),$html);
+
+$replace = [
+  '{_LANG}' => $lang,
+  '{_WIDGET_PICTURE}' => $widget_picture
 ];
 foreach ($replace as $k => $r)
-    $html = str_replace($k,json_encode($r),$html);
-    
+    $html = str_replace($k,$r,$html);
+   
 echo $html;
 
 

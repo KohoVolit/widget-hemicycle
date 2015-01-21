@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang={_LANG}>
+<html lang="{_LANG}">
   <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <script src="http://d3js.org/d3.v3.min.js"></script>
@@ -138,5 +138,6 @@
 
 
 </script>
+{_WIDGET_PICTURE}
   </body>
 </html>
