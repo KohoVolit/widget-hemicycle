@@ -20,9 +20,13 @@
         });
         $(function() {
              $('#hemicycle-form').submit( function() {
-                 $("#resource").val(
-                    //"http://test.kohovolit.sk/m/dev/widget-hemicycle/examples/csv2json.php?url=" + encodeURIComponent($("#resource").val())
-                    "http://localhost/michal/project/widget-hemicycle/examples/csv2json.php?url=" + encodeURIComponent($("#resource").val()) + "&encoding=" + encodeURIComponent($('input[name=file-encoding]:checked', '#hemicycle-form').val())
+                 $("#resource").val(function() {
+                    //recognize localhost for testing:
+                    if (document.URL.indexOf("localhost") > -1)
+                        return "http://localhost/michal/project/widget-hemicycle/examples/csv2json.php?url=" + encodeURIComponent($("#resource").val()) + "&encoding=" + encodeURIComponent($('input[name=file-encoding]:checked', '#hemicycle-form').val())
+                    else
+                         return "http://test.kohovolit.sk/m/dev/widget-hemicycle/examples/csv2json.php?url=" + encodeURIComponent($("#resource").val()) + "&encoding=" + encodeURIComponent($('input[name=file-encoding]:checked', '#hemicycle-form').val())
+                    }
                  );
                  return true;
              });
