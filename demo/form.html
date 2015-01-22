@@ -62,21 +62,21 @@
         </div>
         <a class="btn btn-info" data-toggle="collapse" href="#csv-structure" aria-expanded="false" aria-controls="csv-structure">Required structure of the CSV file (show/hide) </a>
         <div class="collapse" id="csv-structure">
-            <p class="alert alert-warning">Warning: The CSV file MUST contains columns <code>name</code>, <code>party</code> and <code>option_meaning</code> (<code>option_meaning</code> can only have values <code>for</code>, <code>against</code> or <code>neutral</code>), <code>color</code> is a html color, <code>position</code> should be a number in <code>[-100, 100]</code>.</p>
+            <p class="alert alert-warning">Warning: The CSV file MUST contains columns <code>name</code>, <code>party</code> and <code>option_meaning</code>.<br> <code>option_meaning</code> can only have values <code>for</code>, <code>against</code> or <code>neutral</code>,<br><code>color</code> is a html color,<br> <code>position</code> should be a number in <code>[-100, 100]</code> positioning parties from left to right on the visualization (within people who voted equally).</p>
             <table class="table">
                 <caption>Example of the CSV file (in <em>table view</em>):</caption>
                 <thead>
                     <tr><th>name</th><th>party</th><th>option_meaning</th><th><em>color</em></th><th><em>position</em></th><th><em>description</em></th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>Michelle</td><td>Fairies</td><td>for</td><td>pink</td><td>-50</td><td>Yep</td></tr>
+                    <tr><td>Michelle</td><td>Fairies</td><td>for</td><td>pink</td><td>-50</td><td>Yes, whatever</td></tr>
                     <tr><td>Nico</td><td>Pirates</td><td>against</td><td>#000000</td><td>33</td><td>No!</td></tr>
                     <tr><td> ... </td></tr>
                 </tbody>
             </table>
             <p>Example of the actual CSV file (mind the mandatory <code>,</code> as the separator):</p>
             <p><code>name,party,option_meaning,color,position,description<br/>
-                Michelle,Fairies,for,pink,-50,Yes<br/>
+                Michelle,Fairies,for,pink,-50,"Yes, whatever"<br/>
                 Nico,Pirates,against,#000000,33,No!<br/>
                 ...
             </code></p>
