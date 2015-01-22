@@ -31,6 +31,16 @@
                  return true;
              });
         });
+        $(function() {
+            $("#example-1").click(function() {
+                $("#resource").val($('#example-1-link').prop('href'));
+            });
+            $("#example-2").click(function() {
+                $("#resource").val($('#example-2-link').prop('href'));
+                $('input[name="party_set"][value="cz"]').prop('checked', true);
+                $('#orloj_rows').val(2);
+            });
+        });
     </script>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -48,14 +58,15 @@
          </div>
          <h1>Hemicycle Chart Generator <small>for a single vote event</small> <span class="badge bg-info">demo</span></h1>
          <p>Generate splendid <a href="http://www.popoloproject.com/specs/vote-event.html">vote events</a> visualizations in a minute.</p>
-         <p><a href="https://github.com/KohoVolit/widget-hemicycle/">Read more about the widget</a>.</p> 
+         <p>This form uses <a href="https://github.com/KohoVolit/widget-hemicycle/">this Hemicycle widget</a>.</p> 
      </div>
 
      <form action="../widget.php" id="hemicycle-form">
         
         <!-- resource -->
         <h3>CSV Resource <small>resource (part of)</small></h3>
-        <p>Link (url) to the <em>CSV</em> resource file</p>
+        <p>Link (url) to the <em>CSV</em> resource file.
+        <p> Or try our <a id="example-1">smaller example</a> or a <a id="example-2">larger example</a>. (See the <a href="../examples/single_vote_event3.csv" id="example-1-link">smaller example</a> and the <a href="../examples/single_vote_event2.csv" id="example-2-link">larger example</a> as the source files.)</p>
         <div class="form-group">
             <label for="resource">CSV resource: </label>
             <input type="text" class="form-control" name="resource" id="resource" placeholder="URL: http://example.com/vote_event.csv">
