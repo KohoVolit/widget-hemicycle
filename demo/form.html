@@ -34,11 +34,27 @@
         $(function() {
             $("#example-1").click(function() {
                 $("#resource").val($('#example-1-link').prop('href'));
+                
+                $("#resource").select();
+                $('input[name="file-encoding"][value="utf-8"]').prop('checked', true);
+                setTimeout(function() {
+                    $('html, body').animate({
+                        scrollTop: $("#submit").offset().top
+                    }, 2000);
+                }, 1000);
             });
             $("#example-2").click(function() {
                 $("#resource").val($('#example-2-link').prop('href'));
                 $('input[name="party_set"][value="cz"]').prop('checked', true);
                 $('#orloj_rows').val(2);
+                
+                $("#resource").select();
+                $('input[name="file-encoding"][value="utf-8"]').prop('checked', true);
+                setTimeout(function() {
+                    $('html, body').animate({
+                        scrollTop: $("#submit").offset().top
+                    }, 2000);
+                }, 1000);
             });
         });
     </script>
@@ -186,7 +202,7 @@
         </div>        
         <!-- /format --> 
         
-        <button type="submit" class="btn btn-primary btn-lg btn-block"><strong>Create Chart!</strong></button>     
+        <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><strong>Create Chart!</strong></button>     
      </form>
      </div>
      
