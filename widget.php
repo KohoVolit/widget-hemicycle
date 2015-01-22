@@ -5,7 +5,7 @@
 $context = stream_context_create(array('http' => array('header'=>'Connection: close\r\n')));
 
 /* HEMICYCLE */
-$rawdata = json_decode(file_get_contents($_GET['resource']));
+$rawdata = json_decode(file_get_contents($_GET['resource'],false,$context));
 
 $parties = get_parties($rawdata);
 
@@ -186,7 +186,7 @@ function add_attributes($data,$abbr2row) {
             if (isset($abbr2row[$row->party]->position)) $data[$key]->position = $abbr2row[$row->party]->position*100 + $option_meaning2position[$row->option_meaning]*10000000 + $key/100;
             else $data[$key]->position = 0;
         } else {
-            $data[$key]->position = (float) $data[$key]->position;
+            $data[$key]->position = (float) $data[$key]->position*100 + $option_meaning2position[$row->option_meaning]*10000000 + $key/100;
         }
         
     }

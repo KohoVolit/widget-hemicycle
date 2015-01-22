@@ -21,7 +21,8 @@
         $(function() {
              $('#hemicycle-form').submit( function() {
                  $("#resource").val(
-                    "http://test.kohovolit.sk/m/dev/widget-hemicycle/examples/csv2json.php?url=" + encodeURIComponent($("#resource").val())
+                    //"http://test.kohovolit.sk/m/dev/widget-hemicycle/examples/csv2json.php?url=" + encodeURIComponent($("#resource").val())
+                    "http://localhost/michal/project/widget-hemicycle/examples/csv2json.php?url=" + encodeURIComponent($("#resource").val()) + "&encoding=" + encodeURIComponent($('input[name=file-encoding]:checked', '#hemicycle-form').val())
                  );
                  return true;
              });
@@ -39,7 +40,7 @@
     <div class="container">
      <div class="page-header">
         <div class="pull-right">
-            <img src="https://raw.githubusercontent.com/KohoVolit/widget-hemicycle/master/examples/example.png" />
+            <img src="https://raw.githubusercontent.com/KohoVolit/widget-hemicycle/master/examples/example.png" alt="Hemicycle example"/>
          </div>
          <h1>Hemicycle Chart Generator <small>for a single vote event</small> <span class="badge bg-info">demo</span></h1>
          <p>Generate splendid <a href="http://www.popoloproject.com/specs/vote-event.html">vote events</a> visualizations in a minute.</p>
@@ -59,7 +60,7 @@
         <div class="collapse" id="csv-structure">
             <p class="alert alert-warning">Warning: The CSV file MUST contains columns <code>name</code>, <code>party</code> and <code>option_meaning</code> (<code>option_meaning</code> can only have values <code>for</code>, <code>against</code> or <code>neutral</code>), <code>color</code> is a html color, <code>position</code> should be a number in <code>[-100, 100]</code>.</p>
             <table class="table">
-                <caption>Example of the CSV file (in </em>table view</em>):</caption>
+                <caption>Example of the CSV file (in <em>table view</em>):</caption>
                 <thead>
                     <tr><th>name</th><th>party</th><th>option_meaning</th><th><em>color</em></th><th><em>position</em></th><th><em>description</em></th></tr>
                 </thead>
@@ -78,6 +79,23 @@
             <p class="alert alert-warning">Warning: One of the following must be true -  <code>party_set</code> is set, or the resource must contain <code>color</code> and <code>position</code> for each person.</p>
         </div>
         <!-- /resource -->
+
+        <!-- encoding -->
+        <h3>Encoding of the resource <small>resource (part of)</small></h3>
+        <p>Encoding of the CSV resource.</p>
+        <div class="radio">
+          <label>
+            <input type="radio" name="file-encoding" id="encoding1" value="utf-8" checked> UTF-8 <code>utf-8</code>
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="file-encoding" id="encoding2" value="cp1250">
+            Eastern Europe - Windows <code>cp1250</code>
+          </label>
+        </div>       
+        <!-- /encoding --> 
+
         <!-- lang -->
         <h3>Language <small>lang</small></h3>
         <p>Language of the legend (<a href="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO 639-1 code</a>)
@@ -89,7 +107,7 @@
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="lang" id="lang1" value="cs">
+            <input type="radio" name="lang" id="lang2" value="cs">
             Czech <code>cs</code>
           </label>
         </div>

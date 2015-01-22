@@ -2,7 +2,18 @@
 
 $context = stream_context_create(array('http' => array('header'=>'Connection: close\r\n')));
 
-$data = csv2array(file_get_contents($_GET['url'],false,$context));
+if ((isset($_GET['encoding']) and (trim($_GET['encoding']) != ''))) {
+    $encoding = trim($_GET['encoding']);
+} else
+    $encoding = 'utf-8';
+
+$data = csv2array(iconv($encoding,'utf-8//IGNORE', file_get_contents($_GET['url'],false,$context)));
+
+//delete empty rows (Excel may create them)
+foreach ($data as $k=>$row) {
+    if ((trim($row['name']) == '') and (trim($row['option_meaning']) == ''))
+        unset($data[$k]);
+}
 
 // Set HTTP Response Content Type
 header('Content-Type: application/json; charset=utf-8');
