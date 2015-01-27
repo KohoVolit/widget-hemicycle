@@ -2,6 +2,13 @@
 <html lang="{_LANG}">
   <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+    <meta property="og:image" content="{_OG_IMAGE}"/>
+	<meta property="og:title" content="Hemicycle chart"/>
+	<meta property="og:url" content="{_OG_URL}"/>
+	<meta property="og:site_name" content="Hemicycle chart"/>
+	<meta property="og:type" content="website"/>
+	
   <script src="http://d3js.org/d3.v3.min.js"></script>
 
     <script src="d3.hemicycle.js"></script>

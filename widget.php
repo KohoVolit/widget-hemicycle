@@ -101,13 +101,10 @@ if ($cache) {
     else
         $rows_orloj = 1; //default;
 
-    /* FORMAT - creates png/svg and redirects to it if required*/
-    if (isset($_GET['format']) and (in_array($_GET['format'],['png','svg']))) {
-        $htmlf = file_get_contents('widget_picture.tpl');
-        $htmlf = str_replace('{_FORMAT}',$_GET['format'],$htmlf);
-        $widget_picture = $htmlf;
-    } else
-        $widget_picture = "";
+    //og:image (generated png)
+    $og_image = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . '/cache/png/' . md5(curPageURL()) . ".png";
+    //og:url
+    $og_url = curPageURL();
 
     /* TEMPLATE */
     // template
@@ -126,7 +123,8 @@ if ($cache) {
 
     $replace = [
       '{_LANG}' => $lang,
-      '{_WIDGET_PICTURE}' => $widget_picture
+      '{_OG_IMAGE}' => $og_image,
+      '{_OG_URL}' => $og_url,
     ];
     foreach ($replace as $k => $r)
         $html = str_replace($k,$r,$html);
