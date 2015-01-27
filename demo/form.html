@@ -41,6 +41,18 @@
                     $('html, body').animate({
                         scrollTop: $("#submit").offset().top
                     }, 2000);
+                    setTimeout(function() {
+                        $("#submit").button('toggle');
+                        setTimeout(function() {
+                          $("#submit").button('toggle');
+                          setTimeout(function() {
+                            $("#submit").button('toggle');
+                            setTimeout(function() {
+                                $("#submit").button('toggle');
+                            }, 350);
+                          }, 350);
+                        }, 350);
+                    }, 2000);
                 }, 1000);
             });
             $("#example-2").click(function() {
@@ -54,6 +66,18 @@
                     $('html, body').animate({
                         scrollTop: $("#submit").offset().top
                     }, 2000);
+                    setTimeout(function() {
+                        $("#submit").button('toggle');
+                        setTimeout(function() {
+                          $("#submit").button('toggle');
+                          setTimeout(function() {
+                            $("#submit").button('toggle');
+                            setTimeout(function() {
+                                $("#submit").button('toggle');
+                            }, 350);
+                          }, 350);
+                        }, 350);
+                    }, 2000);
                 }, 1000);
             });
         });
@@ -62,7 +86,7 @@
         <div class="container-fluid">
             <div class="navbar-header">
               <a class="navbar-brand" href="#">
-                Hemicycle Chart Generator <small>for a single vote event</small> <span class="badge bg-info">demo</span>
+                Hemicycle Chart Generator <small>for a single vote event</small> <span class="badge bg-info">demo</span> <span class="label label-warning">alpha</span>
               </a>
             </div>
         </div>
@@ -72,13 +96,15 @@
         <div class="pull-right">
             <img src="https://raw.githubusercontent.com/KohoVolit/widget-hemicycle/master/examples/example.png" alt="Hemicycle example"/>
          </div>
-         <h1>Hemicycle Chart Generator <small>for a single vote event</small> <span class="badge bg-info">demo</span></h1>
-         <p>Generate splendid <a href="http://www.popoloproject.com/specs/vote-event.html">vote events</a> visualizations in a minute.</p>
-         <p>This form uses <a href="https://github.com/KohoVolit/widget-hemicycle/">this Hemicycle widget</a>.</p> 
+         <h1>Hemicycle Chart Generator <small>for a single vote event</small> <span class="badge bg-info">demo</span><small><span class="label label-warning">alpha</span></small></h1>
+         <div class="well well-lg">
+             <p>Generate splendid <a href="http://www.popoloproject.com/specs/vote-event.html">vote events</a> visualizations in a minute.
+             <p>This form uses <a href="https://github.com/KohoVolit/widget-hemicycle/">this Hemicycle widget</a>.
+         </div>
      </div>
 
      <form action="../widget.php" id="hemicycle-form">
-        
+        <h2>Select Parameters for the Visualization</h2>
         <!-- resource -->
         <h3>CSV Resource <small>resource (part of)</small></h3>
         <p>Link (url) to the <em>CSV</em> resource file.
@@ -201,7 +227,22 @@
           </label>
         </div>        
         <!-- /format --> 
-        
+
+       <!-- nocache -->
+        <h3>Force recalculation <small>nocache</small></h3>
+        <p>Normally, the calculated chart is cached. You may force recalculation.</p>
+        <div class="radio">
+          <label>
+            <input type="radio" name="nocache" id="nocache1" value="0" checked>No, cache is fine <code>0</code>
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="nocache" id="nocache2" value="1">Yes, recalculate <code>1</code>
+          </label>
+        </div>
+        <!-- /nocache -->
+       
         <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><strong>Create Chart!</strong></button>     
      </form>
      </div>
