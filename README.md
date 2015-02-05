@@ -3,7 +3,7 @@ Widget for creation of a hemicycle visualization for a single vote event.
 
 ![picture] (https://raw.githubusercontent.com/KohoVolit/widget-hemicycle/master/examples/example.png "Example")
 
-The visualization may be created for any number of representatives in `[5, 250]` interval or if the number of representatives equals one of `{257, 266, 270, 275, 290, 292, 300, 301, 308, 315, 325, 326, 336, 348, 349, 350, 357, 360, 375, 386, 400, 435, 440, 450, 460}` ([World parliaments](http://en.wikipedia.org/wiki/List_of_legislatures_by_country))
+The visualization may be created for any number of representatives in `[5, 250]` interval or if the number of representatives equals one of `{257, 266, 270, 275, 290, 292, 300, 301, 308, 315, 325, 326, 336, 348, 349, 350, 357, 360, 375, 386, 400, 435, 440, 450, 460, 462, 480, 498, 500, 508, 513, 547, 550, 552, 560, 577, 601, 614, 620, 630, 650, 687, 754, 765}` ([World parliaments](http://en.wikipedia.org/wiki/List_of_legislatures_by_country))
 
 Technically, the visualization consists of 3 parts ([D3 reusable charts](http://bost.ocks.org/mike/chart/)): *hemicycle* (upper part), *legend* (middle part) and *orloj* (lower part). These parts may be used separately within another visualization.
 
