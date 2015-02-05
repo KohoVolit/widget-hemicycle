@@ -3,7 +3,10 @@
 {"color": "#91b82e", "abbreviation": "Úsvit", "position": -50},
 {"color": "orange", "abbreviation": "ČSSD", "name": "Česká strana sociálně demokratická", "position": -30},
 {"color": "yellow", "abbreviation": "KDU-ČSL", "position": 20},
-{"color": "#5f91b3", "abbreviation": "ANO", "position": 30},
+{"color": "#5f91b3", "abbreviation": "ANO", "name": "ANO 2011", "position": 30},
 {"color": "#660066", "abbreviation": "TOP 09", "name": "TOP 09", "position": 70},
-{"color": "blue", "abbreviation": "ODS", "name": "Občanská demokratická strana", "position": 85}
+{"color": "blue", "abbreviation": "ODS", "name": "Občanská demokratická strana", "position": 85},
+{"color": "#99CC00", "abbreviation": "SZ, KDU-ČSL, STAN", "name": "Trojkoalice SZ, KDU-ČSL, STAN", "position": 25},
+{"color": "black", "abbreviation": "Piráti", "name": "Česká pirátská strana", "position": -10},
+{"color": "gray", "abbreviation": "Nezař.", "name": "Nezařazení", "position": 0}
 ]

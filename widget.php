@@ -105,6 +105,12 @@ if ($cache) {
     $og_image = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . '/cache/png/' . md5(curPageURL()) . ".png";
     //og:url
     $og_url = curPageURL();
+    
+    //format
+    if (isset($_GET['format']))
+        $format = $_GET['format'];
+    else
+        $format = 'html'; //default;    
 
     /* TEMPLATE */
     // template
@@ -125,6 +131,7 @@ if ($cache) {
       '{_LANG}' => $lang,
       '{_OG_IMAGE}' => $og_image,
       '{_OG_URL}' => $og_url,
+      '{_FORMAT}' => $format,
     ];
     foreach ($replace as $k => $r)
         $html = str_replace($k,$r,$html);

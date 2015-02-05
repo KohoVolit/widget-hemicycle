@@ -42,7 +42,7 @@
     </style>
   </head>
   <body>   
-    <div id="chart"></div>
+    <div id="chart" style="margin-top:100px;margin-left:100px;"></div>
 
 <script type="text/javascript">
   data = {_DATA};
