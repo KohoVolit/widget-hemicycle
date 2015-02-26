@@ -31,10 +31,22 @@
       color: #fff;
       border-radius: 2px;
     }
-    .d3-tip.n:after {
+    /*.d3-tip.n:after {
       margin: -1px 0 0 0;
       top: 100%;
       left: 0;
+    }*/
+    /* Southward tooltips */
+    .d3-tip.s:after {
+        margin: 0 0 1px 0;
+        top: -8px;
+        left: 0;
+    }
+    /* Eastward tooltips */
+    .d3-tip.e:after {
+        margin: -4px 0 0 0;
+        top: 50%;
+        left: -8px;
     }
     .stronger {
       color: yellow;
@@ -42,7 +54,7 @@
     </style>
   </head>
   <body>   
-    <div id="chart" style="margin-top:100px;margin-left:100px;"></div>
+    <div id="chart"></div>
 
 <script type="text/javascript">
   data = {{_DATA}};
@@ -67,7 +79,7 @@
         
 
        // Initialize tooltip
-        tip = d3.tip().attr("class", "d3-tip").html(function(d) {
+        tip = d3.tip().direction('e').attr("class", "d3-tip").html(function(d) {
             if (typeof(d["description"]) === 'undefined')
                 chunk = '';
             else
