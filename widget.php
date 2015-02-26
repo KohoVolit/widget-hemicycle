@@ -1,6 +1,7 @@
 <?php
 
 //$start = microtime(true);
+error_reporting(0);
 
 //cache
 if ((!isset($_GET['nocache'])) or (!$_GET['nocache'])) {
@@ -32,10 +33,12 @@ if ($cache) {
         $url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . '/papi/?' . http_build_query(['parties' => $parties]) . $chunk;
 
         $r = json_decode(file_get_contents($url,false,$context));
+        
+        //print_r($r);die();
 
         $abbr2row = [];
         foreach ($r->data as $row) {
-            $abbr2row[$row->abbreviation] = $row;
+            $abbr2row[$row->key] = $row;
         }
         $parties = $r->data;
         $data = add_attributes($rawdata,$abbr2row);
@@ -44,8 +47,19 @@ if ($cache) {
         $data = $rawdata;
         $data = add_attributes($rawdata,[]);
     }
-
     usort($data, "cmp");
+    
+    foreach($data as $key=>$sen) {
+        if (isset($abbr2row[$sen->party])) {
+            $row = $abbr2row[$sen->party];
+            if (isset($row->other_names)) {
+                foreach ($row->other_names as $name) {
+                    if(isset($name->note) and ($name->note == "abbreviation"))
+                        $data[$key]->party = $name->name;
+                }
+            }
+        }
+    }
 
 
     //n api
@@ -87,6 +101,15 @@ if ($cache) {
     // parties for orloj
     $orloj_parties = [];
     foreach ($parties as $party) {
+        if (isset($party->other_names)) {
+            foreach ($party->other_names as $name) {
+                if(isset($name->note) and ($name->note == "abbreviation"))
+                    $party->abbreviation = $name->name;
+            }
+        }
+        if (!isset($party->other_names)) {
+            $party->abbreviation = $party->name;
+        }
         $orloj_parties[] = ['color'=>$party->color, 'text' => $party->abbreviation];
     }
 
@@ -116,25 +139,25 @@ if ($cache) {
     // template
     $html = file_get_contents('widget.tpl');
     $replace_jsonized = [
-      '{_DATA}' => $data,
-      '{_DAT}' => $dat,
-      '{_ARCS}' => $arcs,
-      '{_LEGEND}' => $legend,
-      '{_ORLOJ_PARTIES}' => $orloj_parties,
-      '{_WIDTH}' => $width,
-      '{_ROWS_ORLOJ}' => $rows_orloj,
+      '_DATA' => $data,
+      '_DAT' => $dat,
+      '_ARCS' => $arcs,
+      '_LEGEND' => $legend,
+      '_ORLOJ_PARTIES' => $orloj_parties,
+      '_WIDTH' => $width,
+      '_ROWS_ORLOJ' => $rows_orloj,
     ];
     foreach ($replace_jsonized as $k => $r)
-        $html = str_replace($k,json_encode($r),$html);
+        $html = str_replace('{{'.$k.'}}',json_encode($r),$html);
 
     $replace = [
-      '{_LANG}' => $lang,
-      '{_OG_IMAGE}' => $og_image,
-      '{_OG_URL}' => $og_url,
-      '{_FORMAT}' => $format,
+      '_LANG' => $lang,
+      '_OG_IMAGE' => $og_image,
+      '_OG_URL' => $og_url,
+      '_FORMAT' => $format,
     ];
     foreach ($replace as $k => $r)
-        $html = str_replace($k,$r,$html);
+        $html = str_replace('{{'.$k.'}}',$r,$html);
        
     echo $html;
 
@@ -208,8 +231,10 @@ function add_attributes($data,$abbr2row) {
                 $data[$key]->color = 'gray';
         }
         if (!isset($data[$key]->position)) {
-            if (isset($abbr2row[$row->party]->position)) $data[$key]->position = $abbr2row[$row->party]->position*100 + $option_meaning2position[$row->option_meaning]*10000000 + $key/100;
-            else $data[$key]->position = 0;
+            if (isset($abbr2row[$row->party]->position)) 
+                $data[$key]->position = $abbr2row[$row->party]->position*100 + $option_meaning2position[$row->option_meaning]*10000000 + $key/100;
+            else 
+                $data[$key]->position = 0;
         } else {
             $data[$key]->position = (float) $data[$key]->position*100 + $option_meaning2position[$row->option_meaning]*10000000 + $key/100;
         }

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="{_LANG}">
+<html lang="{{_LANG}}">
   <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   
-    <meta property="og:image" content="{_OG_IMAGE}"/>
+    <meta property="og:image" content="{{_OG_IMAGE}}"/>
 	<meta property="og:title" content="Hemicycle chart"/>
-	<meta property="og:url" content="{_OG_URL}"/>
+	<meta property="og:url" content="{{_OG_URL}}"/>
 	<meta property="og:site_name" content="Hemicycle chart"/>
 	<meta property="og:type" content="website"/>
 	
@@ -45,12 +45,12 @@
     <div id="chart" style="margin-top:100px;margin-left:100px;"></div>
 
 <script type="text/javascript">
-  data = {_DATA};
-  dat = {_DAT};
+  data = {{_DATA}};
+  dat = {{_DAT}};
         
         //width and height
-        var w = {_WIDTH},
-            rowsOrloj = {_ROWS_ORLOJ},
+        var w = {{_WIDTH}},
+            rowsOrloj = {{_ROWS_ORLOJ}},
             iconHeightOrloj = w/22, // w/22 for 2 rowsOrloj
             h = w*(1/2+1/8+rowsOrloj*1/16);
 
@@ -82,7 +82,7 @@
                 .widthIcon(function(d) {return d.widthIcon;})
                 .width(function(d) {return d.width;})
                 .people(function(d) {return d.people;})
-                .arcs({_ARCS})
+                .arcs({{_ARCS}})
                 ;
        
        //create hemicycle         
@@ -103,7 +103,7 @@
         .style("opacity", 1e-6);   
         
         //legend data
-        var legendData = [{_LEGEND}];   
+        var legendData = [{{_LEGEND}}];   
         
         var myLegend = d3.legend()
                 .label(function(d) {return d.label;})
@@ -123,7 +123,7 @@
                 //'label' : ['Legenda:'],
                 'rows': rowsOrloj,
                 'iconHeight': iconHeightOrloj,
-                'icons' : {_ORLOJ_PARTIES}
+                'icons' : {{_ORLOJ_PARTIES}}
             }];
         
         var myOrloj = d3.orloj()
@@ -159,10 +159,10 @@
     });
     var i = 0;
     function get_picture() {
-        $.ajax('cache/{_FORMAT}/' + CryptoJS.MD5(window.location.href).toString() + '.{_FORMAT}', {
+        $.ajax('cache/{{_FORMAT}}/' + CryptoJS.MD5(window.location.href).toString() + '.{_FORMAT}', {
             statusCode: {
               200: function (response) {
-                 location.href = 'cache/{_FORMAT}/' + CryptoJS.MD5(window.location.href).toString() + '.{_FORMAT}';
+                 location.href = 'cache/{{_FORMAT}}/' + CryptoJS.MD5(window.location.href).toString() + '.{{_FORMAT}}';
               },
               404: function(response) {
                 i++;

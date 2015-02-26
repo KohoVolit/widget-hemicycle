@@ -1,12 +1,15 @@
 [
-{"color": "red", "abbreviation": "KSČM", "name": "Komunistická strana Čech a Moravy", "position": -90},
-{"color": "#91b82e", "abbreviation": "Úsvit", "position": -50},
-{"color": "orange", "abbreviation": "ČSSD", "name": "Česká strana sociálně demokratická", "position": -30},
-{"color": "yellow", "abbreviation": "KDU-ČSL", "position": 20},
-{"color": "#5f91b3", "abbreviation": "ANO", "name": "ANO 2011", "position": 30},
-{"color": "#660066", "abbreviation": "TOP 09", "name": "TOP 09", "position": 70},
-{"color": "blue", "abbreviation": "ODS", "name": "Občanská demokratická strana", "position": 85},
-{"color": "#99CC00", "abbreviation": "SZ, KDU-ČSL, STAN", "name": "Trojkoalice SZ, KDU-ČSL, STAN", "position": 25},
-{"color": "black", "abbreviation": "Piráti", "name": "Česká pirátská strana", "position": -10},
-{"color": "gray", "abbreviation": "Nezař.", "name": "Nezařazení", "position": 0}
+{"color": "red", "name": "Komunistická strana Čech a Moravy", "other_names": [{"name":"KSČM", "note":"abbreviation"}, {"name":"Poslanecký klub Komunistické strany Čech a Moravy"}], "position": -90},
+{"color": "#91b82e", "name": "Úsvit přímé demokracie", "other_names": [{"name":"Úsvit", "note":"abbreviation"}, {"name":"Poslanecký klub Úsvitu přímé demokracie"}],"position": -50},
+{"color": "orange", "other_names": [{"name":"ČSSD", "note":"abbreviation", "note":"abbreviation"}, {"name":"Poslanecký klub České strany sociálně demokratické"}, {"name":"Senátorský klub České strany sociálně demokratické"}], "name": "Česká strana sociálně demokratická", "position": -30},
+{"color": "yellow", "other_names": [{"name":"KDU-ČSL", "note":"abbreviation"}, {"name":"Poslanecký klub Křesťanské a demokratické unie-Československé strany lidové"}, {"name": "Senátorský klub KDU-ČSL a nezávislí"}], "name": "Křesťanská a demokratická unie-Československá strana lidová", "position": 20},
+{"color": "#5f91b3", "other_names": [{"name":"ANO", "note":"abbreviation"}, {"name":"Poslanecký klub ANO 2011"},{"name":"Senátorský klub ANO + Severočeši.cz"}], "name": "ANO 2011", "position": 30},
+{"color": "#660066", "other_names": [{"name":"TOP 09", "note":"abbreviation"}, {"name":"Poslanecký klub TOP 09 a Starostové"}], "name": "TOP 09", "position": 70},
+{"color": "blue", "other_names": [{"name":"ODS", "note":"abbreviation"}, {"name":"Poslanecký klub Občanské demokratické strany"}, {"name":"Senátorský klub Občanské demokratické strany"}], "name": "Občanská demokratická strana", "position": 85},
+{"color": "#99CC00", "other_names": [{"name":"SZ, KDU-ČSL, STAN", "note":"abbreviation"}], "name": "Trojkoalice SZ, KDU-ČSL, STAN", "position": 25},
+{"color": "black", "other_names": [{"name":"Piráti", "note":"abbreviation"}], "name": "Česká pirátská strana", "position": -10},
+{"color": "gray", "other_names": [{"name":"Nezař.", "note":"abbreviation"}], "name": "Nezařazení", "position": 0},
+{"color": "#660066", "other_names": [{"name":"STAN","note":"abbreviation"},{"name": "Klub Starostové a nezávislí"}], "name": "Starostové a nezávislí", "position": 70},
+{"color":"red", "other_names": [{"name": "Senátorský klub SPO+KSČM+Severočech"},{"name":"SPO, KSČM, S.cz","note":"abbreviation"}], "name": "Senátorský klub SPO+KSČM+Severočech","position": -75}
+
 ]

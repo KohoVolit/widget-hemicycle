@@ -1,0 +1,11 @@
+[
+{"color": "red", "other_names": [{"name":"HZDS", "note":"abbreviation"}, {"name":"Klub HZDS"}, {"name": "Klub ĽS – HZDS"}, {"name":"Klub ĽS-HZDS"}], "name": "ĽS – HZDS", "position": -90},
+{"color": "green", "name": "SMK-MKP", "other-names": [{"name": "Klub SMK – MKP"},{"name":"Klub SMK-MKP"},{"name":"SMK-MKP","note":"abbreviation"}], "position": 20},
+{"color": "red", "name": "SMER", "other_names": [{"name": "Klub SMER – SD"}, {"name":"SMER", "note":"abbreviation"}, {"name":"Klub SMER-SD"}], "position": -50},
+{"color": "green", "name": "OĽaNO", "other_names": [{"name": "Klub OĽaNO"}, {"name":"OĽaNO", "note":"abbreviation"}], "position": 40},
+{"color": "#3B8DBD", "name": "KDH", "other_names": [{"name": "Klub KDH"}, {"name":"KDH", "note":"abbreviation"}], "position": 20},
+{"color": "orange", "name": "MOST-HÍD", "other_names": [{"name": "Klub MOST-HÍD"}, {"name":"MOST-HÍD", "note":"abbreviation"}], "position": 30},
+{"color": "blue", "name": "SDKÚ – DS", "other_names": [{"name": "Klub SDKÚ – DS"}, {"name":"SDKÚ-DS", "note":"abbreviation"}, {"name":"Klub SDKÚ-DS"}], "position": 70},
+{"color": "#A6CE38", "name": "SaS", "other_names": [{"name": "Klub SaS"}, {"name":"SaS", "note":"abbreviation"}], "position": 90},
+{"color": "#666", "name": "Poslanci, ktorí nie sú členmi poslaneckých klubov", "other_names": [{"name": "-"}, {"name":"Nezar.", "note":"abbreviation"}], "position": 0}
+]
