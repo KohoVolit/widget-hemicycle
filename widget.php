@@ -1,7 +1,7 @@
 <?php
 
 //$start = microtime(true);
-error_reporting(0);
+//error_reporting(0);
 
 //cache
 if ((!isset($_GET['nocache'])) or (!$_GET['nocache'])) {
