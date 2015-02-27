@@ -69,6 +69,9 @@ if ($cache) {
 
     //arcs
     $arcs = create_arcs($data);
+    
+    //score
+    $score = calculate_score($data);
 
     /* LEGEND */
     //language / legend
@@ -146,6 +149,7 @@ if ($cache) {
       '_ORLOJ_PARTIES' => $orloj_parties,
       '_WIDTH' => $width,
       '_ROWS_ORLOJ' => $rows_orloj,
+      '_SCORE' => $score,
     ];
     foreach ($replace_jsonized as $k => $r)
         $html = str_replace('{{'.$k.'}}',json_encode($r),$html);
@@ -267,6 +271,14 @@ function create_arcs($data) {
         }
     }
     return $arcs;
+}
+
+function calculate_score($data) {
+    $score = ['for'=>['value'=>0,'color'=>'green'],'neutral'=>['value'=>0,'color'=>'gray'],'against'=>['value'=>0,'color'=>'darkred'],];
+    foreach ($data as $row) {
+        $score[$row->option_meaning]['value']++;
+    }
+    return $score;
 }
 
 function curPageURL() {

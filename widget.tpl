@@ -95,6 +95,7 @@
                 .width(function(d) {return d.width;})
                 .people(function(d) {return d.people;})
                 .arcs({{_ARCS}})
+                .score({{_SCORE}})
                 ;
        
        //create hemicycle         

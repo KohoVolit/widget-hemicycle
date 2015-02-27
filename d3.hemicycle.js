@@ -15,7 +15,8 @@ d3.hemicycle = function() {
                 width_val = (typeof(width) === "function" ? width(d) : width);
                 people_val = (typeof(people) === "function" ? people(d) : people),
                 n_val = (typeof(n) === "function" ? n(d) : (typeof(n) === 'undefined' ? [people_val.length] : n));
-            var arcs_val = (typeof(arcs) === "function" ? arcs(d) : arcs);
+            var arcs_val = (typeof(arcs) === "function" ? arcs(d) : arcs),
+                score_val = (typeof(score) === "function" ? score(d) : score);
 
             var rmax = 1 + n_val.length *gap_val*widthIcon_val;
 
@@ -67,14 +68,14 @@ d3.hemicycle = function() {
             //get this
             var element = d3.select(this);
             
-            // ARCS   
+            // ARCS
             for (key in arcs_val) {
                 arc = arcs_val[key];
                     //correct for +-90:
                 if (arc.start == 0) arc.startangle = -90;
                 else arc.startangle = (data[arc.start].rot + data[arc.start-1].rot)/2;
                 if (arc.end == (data.length -1)) arc.endangle = 90;
-                else arc.endangle = (data[arc.end].rot + data[arc.end+1].rot)/2
+                else arc.endangle = (data[arc.end].rot + data[arc.end+1].rot)/2;
             }
             var arci = d3.svg.arc()
                 .startAngle(function(d){
@@ -174,6 +175,34 @@ d3.hemicycle = function() {
                 })
                 ;
                 
+            //score
+            svg.append("text")
+              .attr('font-family', 'sans-serif')
+              .attr('font-size',xxScale(d.widthIcon))        //adjust as needed
+              .attr('font-weight','bold')
+              .attr('text-anchor',"end")
+              .attr('fill', score['against']['color'])
+              .attr('x',parseFloat(xScale(0))-parseFloat(xxScale(d.widthIcon*0.15))) 
+              .attr('y',yScale(0))
+              .text(score['against']['value']);
+            svg.append("text")
+              .attr('font-family', 'sans-serif')
+              .attr('font-size',xxScale(d.widthIcon))        //adjust as needed
+              .attr('font-weight','bold')
+              .attr('text-anchor',"start")
+              .attr('fill', score['for']['color'])
+              .attr('x',parseFloat(xScale(0))+parseFloat(xxScale(d.widthIcon*0.15))) 
+              .attr('y',yScale(0))
+              .text(score['for']['value']); 
+            svg.append("text")
+              .attr('font-family', 'sans-serif')
+              .attr('font-size',xxScale(d.widthIcon))        //adjust as needed
+              .attr('font-weight','bold')
+              .attr('text-anchor',"middle")
+              .attr('fill', 'gray')
+              .attr('x',xScale(0)) 
+              .attr('y',yScale(0))
+              .text(':');
 
         });
     }
@@ -207,6 +236,11 @@ d3.hemicycle = function() {
     hemicycle.arcs = function(value) {
         if (!arguments.length) return value;
         arcs = value;
+        return hemicycle;
+    };
+    hemicycle.score = function(value) {
+        if (!arguments.length) return value;
+        score = value;
         return hemicycle;
     };
 
