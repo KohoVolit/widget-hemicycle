@@ -60,11 +60,11 @@ Example of format: `png`
 
 Note: Inscape MUST be installed for this export to `png`(`svg`).
 
-##Examples
-###Example files
+## Examples
+### Example files
 There are example `csv` files (in `/examples` directory) and their convertor `csv2json.php` into `json` objects.
 
-###Example calling
+### Example calling
 ```url
 widget.php?  
 resource=http://localhost/michal/project/widget-hemicycle/examples/csv2json.php%3Furl%3Dhttp%3A%2F%2Flocalhost%2Fmichal%2Fdev%2Fhemicycle%2Foptims%2Fsingle_vote_event2.csv  
